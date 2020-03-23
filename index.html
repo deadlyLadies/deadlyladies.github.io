@@ -4,6 +4,19 @@
             background-color: black;
             color: white;
         }
+        .rightArrow {
+            position: fixed;
+            top: 50%;
+            right:10px;
+            cursor:pointer
+        }
+
+        .leftArrow {
+            position: fixed;
+            top: 50%;
+            left:10px;
+            cursor:pointer
+        }
     </style>
     <script>
         Object.defineProperty(HTMLMediaElement.prototype, 'notPlaying', {
@@ -26,6 +39,8 @@
         <img id="image4" src="images/Lady Lisa Fight Kick.png" hidden>
         <img id="image5" src="images/Lady Lisa Fight Spin.png" hidden>
         <img id="image6" src="images/Lady Lisa Fight end.png" hidden> <br>
+        <img class="rightArrow" src="images/right.png" onclick = "photosScrollRight()">
+        <img class="leftArrow" src="images/left.png" onclick = "photosScrollLeft()">
     </center>
     <center id="extraImages" hidden>
         <h2>Other Images</h2>
@@ -83,15 +98,15 @@
         images.hidden = !(notPlaying)
     }
 
-    function scrollLeft() {
-        imageViewed == 0? imageViewed = imageList.length - 1:imageViewed--
-        for(var i = 0; i < imageList.length; i++) {
+    function photosScrollLeft() {
+        imageViewed == 0? (imageViewed = imageList.length - 1):imageViewed--
+        for (var i = 0; i < imageList.length; i++) {
             imageList[i].hidden = true
         }
         imageList[imageViewed].hidden = false
     }
 
-    function scrollRight() {
+    function photosScrollRight() {
         imageViewed == imageList.length - 1? imageViewed=0:imageViewed++
         for(var i = 0; i < imageList.length; i++) {
             imageList[i].hidden = true
